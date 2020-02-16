@@ -1,1 +1,1 @@
-web: gunicorn skillbox.wsgi
+web: gunicorn skillsbox.wsgi
