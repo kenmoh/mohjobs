@@ -93,11 +93,13 @@ WSGI_APPLICATION = 'skillsbox.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'naijadb',
-        'USER': 'postgres',
-        'PASSWORD': 'areneth',
-        'HOST': 'localhost'
+        # 'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR,'naijadb')
+        # 'NAME': 'naijadb',
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'areneth',
+        # 'HOST': 'localhost'
     }
 }
 
