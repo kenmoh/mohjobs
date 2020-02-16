@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+<!-- Loading Static content -->
+{% load static %}
+<!-- ------- -->
+{% block title %} | Employer Dashboard {% endblock %}
+{% block content %}
+<!-- ==== NAVIGATION BUTTON ====== -->
+<section class="container">
+    {% include "partials/_alert.html" %}
+    <h5 class="text-center mt-5 teal-text">DASHBOARD</h5>
+    <!-- Lekki -->
+    {% if user.lekki %}
+    <p class="text-center grey-text"> Welcome <strong> {{ user.username.title }}</strong>, You are on <strong> Lekki </strong>Plan !</p>
+    {% else %}
+    {% endif %}
+    <!-- Ikoyi -->
+    {% if user.ikoyi %}
+    <p class="text-center grey-text">Welcome<strong> {{ user.username.title }}</strong>, You are on <strong> Ikoyi </strong>Plan !</p>
+    {% else %}
+    {% endif %}
+    <!-- Eko -->
+    {% if user.eko_atlantic %}
+    <p class="text-center grey-text">Welcome<strong> {{ user.username.title }}</strong>, You are on <strong> Eko Atlantic </strong>Plan !</p>
+    {% else %}
+    {% endif %}
+    <div class="row">
+        {% if request.user.ikoyi or request.user.eko_atlantic or request.user.lekki %}
+        <div class="col-sm-12 col-md-12 col-lg-6 mb-2">
+            <a href="{% url 'company_profile' user.id %}" type="button" class="btn btn-black btn-block">
+                COMPANY PROFILE 
+            </a>
+        </div>
+        {% if request.user.ikoyi %}
+        <div class="col-sm-12 col-md-12 col-lg-6 mb-2">
+            <a href="{% url 'post' %}" type="button" 
+            {% if posts|length == 10 %}
+            class="btn btn-black btn-block disabled"
+            {% else %}
+            class="btn btn-black btn-block"
+            {% endif %}
+            > 
+            POST JOB </a>
+        </div>
+        {% elif request.user.eko_atlantic %}
+        <div class="col-sm-12 col-md-12 col-lg-6 mb-2">
+            <a href="{% url 'post' %}" type="button"
+            {% if posts|length == 15 %} 
+            class="btn btn-black btn-block disabled"
+            {% else %} 
+            class="btn btn-black btn-block" 
+            {% endif %}
+            >
+            POST JOB </a>
+        </div>
+        {% elif request.user.lekki %}
+        <div class="col-sm-12 col-md-12 col-lg-6 mb-2">
+            <a href="{% url 'post' %}" type="button"
+            {% if posts|length == 1 %} 
+            class="btn btn-black btn-block disabled"
+            {% else %} 
+            class="btn btn-black btn-block" 
+            {% endif %}
+            >
+            POST JOB </a>
+        </div>
+        {% endif %}
+       
+        {% endif %}
+    </div>
+    <!-- Alerts -->
+    <div class="container">
+    </div>
+</section>
+<!-- EXPERIENCE -->
+<section class="container">
+    <h5 class="teal-text text-center mt-3 mb-3">
+        Job History
+    </h5>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                
+                <th scope="col">Job Title</th>
+                <th scope="col">Year(s) of Experience</th>
+                <th scope="col">Job Requirement(s)</th>
+                <th scope="col">Job Description</th>
+                <th scope="col">Location</th>
+                <th scope="col">Published</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts %}
+            <tr>
+                <td>{{ post.job_title }}</td>
+                <td>{{ post.years_experience }}</td>
+                <td>{{ post.job_requirement}}</td>
+                <td>{{ post.job_description }}</td>
+                <td>{{ post.job_location}}</td>
+                <td>{{ post.publish}}</td>
+                <td></td>
+                <td class="d-flex">
+                    <a role="button" href="{% url 'edit' post.id %}"
+                        class="btn btn-primary btn-sm mr-2">
+                        Edit
+                    </a>
+                    <button class="btn btn-danger btn-sm" type="submit" data-toggle="modal"
+                        data-target="#deleteJob">Delete</button>
+                    <!-- Job Modal -->
+                    <div class="modal fade" id="deleteJob" tabindex="-1" role="dialog"
+                        aria-labelledby="deletJobLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-center" id="deletJobLabel">Delete Job...</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h6 class="text-center text-danger">Are you sure you want to delete this Job ?
+                                    </h6>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="{% url 'employer-dashboard' user.id %}" type="button"
+                                        class="btn btn-sm btn-black">Cancel</a>
+                                    <form action="{% url 'delete-job' post.id %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </tbody>
+    </table>
+    <hr class="bg-info">
+    {% if request.user.lekki and posts|length == 1 %}
+    <p class="text-danger text-center">You can only List one job with this Plan ! Chose a paid plan to have more permissions.</p>
+    {% endif %}
+    {% if posts %}
+    <p class="teal-text text-center">
+        *** Total Listing(s): <strong> {{ posts|length}} </strong> ***
+    </p>
+    {% endif %}
+    {% if user.ikoyi and posts|length == 10 %}
+        <p class="text-danger text-center">
+        *** You have exceeded your monthly job listings. You can delete a listing or delete an
+        unpublished listing to make room for another ! ***
+        </p>
+    {% elif user.eko_atlantic and posts|length == 15 %}
+    <p class="text-danger text-center">
+        *** You have exceeded your monthly job listings. You can delete a listing or delete an
+        unpublished listing to make room for another ! ***
+    </p>
+    {% endif %}
+</section>
+</section>
+{% endblock %}
+

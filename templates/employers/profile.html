@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% load static %}
+<!-- ------- -->
+{% block title %} | Profile {% endblock %}
+
+{% block content %}
+    <!-- ==== PROFILE====== -->
+    <section class="container">
+        <div class="card mb-3 mt-0">
+            <img src="./img/img.jpg" class="card-img-top bg-img" alt="...">
+            <div class="card-body">
+                <img src="./img/img.jpg" class="d-flex rounded-circle img-circle mx-auto d-block shadow" alt="...">
+                <h3 class="card-title mt-2 text-center">SolutionsMOH</h3>
+                <div class="d-flex justify-content-center">
+                    <p class="card-text mx-4"><i class="fas fa-phone-alt"></i> 07063692766</p>
+                    <p class="card-text mx-4"><i class="far fa-envelope"></i> ken@gmail.com</p>
+                    <p class="card-text mx-4"><i class="far fa-envelope"></i> www.solutionmoh.com</p>
+                </div>
+                <p class="card-text mx-4 text-center"><i class="fas fa-map-marker-alt"></i> Lagos</p>
+            </div>
+    </section>
+    <!-- ABOUT SECTION -->
+    <section class="container">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title text-center teal-text">About Us</h5>
+                <div class="d-flex justify-content-center">
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+    

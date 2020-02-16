@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+<!-- Loading Static -->
+{% load static %}
+<!-- Main Content -->
+{% block content %}
+<!-- Login Form -->
+<section class="container">
+  <div class="row  mt-5 mb-5">
+    <div class="col-sm-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4">
+      <div class="card border-secondary mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-center teal-text">Login</h3>
+            <hr />
+            {% include "partials/_alert.html" %}
+            <form method="POST" class="mt-4">
+              {% csrf_token %}
+              <div class="form-row" id="addForm">
+                <div class="form-group col-sm-12">
+                  <input type="text" class="form-control form-control-sm" placeholder="Username" name="username" />
+                </div>
+                <div class="form-group col-sm-12">
+                  <input type="password" class="form-control form-control-sm" placeholder="Password" name="password" />
+                </div>
+              </div>
+              <button type="submit" class="btn btn-black  btn-sm mt-3 btn-block">
+                Login
+              </button>
+              <small class="text-muted"> Don't have an Account? Register
+                <a href="{% url 'register' %}" class="text-primary">Here</a></small>
+                <br>
+              <small class="text-muted"> Forgot Password? Clich
+                <a href="{% url 'reset_password' %}" class="text-primary">Here</a></small>
+            </form>
+            <br />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

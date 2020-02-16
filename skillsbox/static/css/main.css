@@ -1,0 +1,131 @@
+.teal-text {
+  color: teal !important;
+}
+
+.grey-text {
+  color: gray !important;
+}
+
+.btn-round {
+  border-radius: 50% !important;
+}
+
+.btn-black {
+  background-color: black !important;
+  color: white !important;
+}
+
+.btn-red {
+  background-color: rgb(94, 0, 0) !important;
+  color: white !important;
+}
+
+/* FORM BORDER */
+.border {
+  border-color: teal !important;
+  border-radius: 10px !important;
+}
+
+/* BACKGROUND COLOR */
+.bg-grey {
+  background-color: grey !important;
+  color: white;
+}
+
+.form-control:focus {
+  border-color: purple;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075),
+    0 0 8px rgba(199, 2, 206, 0.6);
+}
+
+/* .btn {
+  border-radius: 25px !important;
+} */
+
+.img-circle {
+  height: 150px !important;
+  width: 150px !important;
+  margin-top: -125px !important;
+}
+
+.profile-img {
+  height: 75px !important;
+  width: 75px !important;
+}
+
+.bg-img {
+  height: 200px !important;
+}
+
+/* EQUAL COLUMN */
+
+.search-bg {
+  height: 400px !important;
+  width: 100% !important;
+}
+
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 0px;
+}
+
+.card {
+  border-radius: 0 !important;
+}
+
+.mx {
+  margin-left: -200px !important;
+}
+
+.article-img {
+  height: 65px;
+  width: 65px;
+  margin-right: 16px;
+}
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+body {
+  background: #fafafa;
+  color: #333333;
+}
+
+.price-border {
+  border-style: solid !important;
+  border-width: 5p !important;
+}
+
+/* NAVBAR */
+
+.header_area .main-menu .navbar .navbar-brand {
+  padding: 10 2rem 10 5rem !important;
+}
+
+.bg-teal {
+  background-color: teal !important;
+  color: white !important;
+  opacity: 0.5;
+}
+
+.jumbotron-bg {
+  background-color: teal;
+  color: whitesmoke;
+  opacity: 0.75;
+}
+
+.home-bg {
+  background-image: url("/static/img/lagos.jpg") !important;
+  height: 120vh !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: bottom !important;
+}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+<!-- Loading Static -->
+{% load static %}
+<!-- Crispy Form Tags -->
+{% load crispy_forms_tags %}
+<!-- Main Content -->
+{% block content %}
+<!-- Login Form -->
+<section class="container">
+  <div class="row  mt-5 mb-5">
+    <div class="col-sm-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4">
+      <div class="card border-secondary mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-center teal-text"> Update Payment </h3>
+            <hr />
+            {% include "partials/_alert.html" %}
+            <form method="POST">
+              {% csrf_token %}
+              <small class="text-muted">Click on the checkbox and hit the confirm button to confirm your
+                payment
+              </small>
+              <br /><br />
+              <!-- -------- -->
+              {{ form | crispy }}
+            <button type="submit" class="btn btn-block btn-black btn-sm">
+              Confirm
+            </button>
+            </form>
+            <br />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

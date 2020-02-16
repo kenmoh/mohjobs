@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+<!-- Static -->
+{% load static %}
+<!-- ------- -->
+{% block title %} | Job Description {% endblock %}
+<!-- Home Page Content -->
+{% block content %}
+<!-- Search Form -->
+<!-- Employers -->
+<section class="container mt-3">
+  <div class="row justify-content-center">
+    {% for post in posts %}
+    <!-- Check if job is Available and Published -->
+    {% if post.publish %}
+    <!-- -------- -->
+    <!-- -------- -->
+    <div class="col-sm-12 col-md-8 col-lg-7">
+      <div class="content-section">
+        <div class="media">
+          <div class="media-body">
+            <small class="mb-0 text-success"
+              >Location: <strong>{{ post.job_location }} </strong></small
+            ><br />
+            <small class="mb-0 text-success"
+              >Listed:
+              <strong>{{ post.date_posted | timesince }} </strong> Ago</small
+            ><br />
+            <small class="mb-0 text-success">Requirement(s):</small><br />
+            {% for requirement in post.job_requirements_as_list %}
+            <span class="badge badge-secondary"> {{ requirement }} </span>
+            {% endfor %}
+            <br />
+            <small class="mb-0 text-success"
+              ><strong>Description: </strong></small
+            ><br />
+            <small class="teal-text">{{ post.job_description }}</small>
+            <br />
+            {% if request.user.is_authenticated %} {% if post.application_link
+            %}
+            <a
+              href="{{ post.application_link  }}"
+              type="submit"
+              class="btn btn-sm btn-black ml-auto mr-auto float-right"
+              >Apply Here</a
+            >
+            {% else %}
+            <small class="text-primary float-right"
+              >Send CV: <strong>{{ post.application_email }}</strong></small
+            >
+            {% endif %} {% else %}
+            <small class="text-primary text-center float-right"
+              ><a href="{% url 'login' %}">Login to Apply !</a></small
+            >
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ------- -->
+    {% else %}
+    <div class="container">
+      <h1 class="text-center text-teal">No Job Listings Available</h1>
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+</section>
+{% endblock content %}

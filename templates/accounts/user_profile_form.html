@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+<!-- ==== PROFILE FORM ===== -->
+{% load static %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+<!-- ======= -->
+{% block content %}
+<h4 class="teal-text text-center mt-3">CREATE YOUR PROFILE</h4>
+<h5 class="grey-text text-center">
+  Let potential employer know about you !
+</h5>
+</section><section class="container">
+  <div class="row  mt-5 mb-5">
+    <div class="col-sm-12 col-md-12 col-lg-10  offset-lg-1">
+      <div class="card border-secondary mb-3">
+        <div class="card-body">
+          <h5 class="card-title text-center teal-text">Add Profile</h3>
+            <hr />
+            <form method="POST" class="mt-2 mb-2" enctype="multipart/form-data" autocapitalize="off">
+              {% csrf_token %}
+              <!---------- -->
+              {{ form | crispy }}
+              <!-- {{ form.skills|as_crispy_field }}
+              {{ form.location|as_crispy_field }}
+              {{ form.about_me|as_crispy_field }}
+              {{ form.profile_image|as_crispy_field }}
+              {{ form.background_image|as_crispy_field }}
+              {{ form.publish|as_crispy_field }} -->
+              
+              <button type="submit" class="btn btn-black btn-sm btn-block">
+                UPDATE
+              </button>
+              <small>Click <a href="{% url 'change' %}">here </a> to Update Personal Profile</small>
+            </form>
+            <br />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

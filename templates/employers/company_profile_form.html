@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+<!-- ==== PROFILE FORM ===== -->
+{% load static %}
+<!-- ------- -->
+{% block title %} | Company Profile {% endblock %}
+{% load crispy_forms_tags %}
+{% load crispy_forms_field %}
+<!-- ======= -->
+{% block content %}
+</section>
+<section class="container">
+    <div class="row  mt-5 mb-5">
+        <div class="col-sm-12 col-md-12 col-lg-8  offset-lg-1">
+            <div class="card border-secondary mb-3">
+                <div class="card-body">
+                    <h5 class="card-title text-center teal-text">Update Company Profile</h3>
+                        <hr />
+                        <form method="POST" class="mt-2 mb-2" enctype="multipart/form-data" autocapitalize="off">
+                            {% csrf_token %}
+                            <!---------- -->
+                            {{ form | crispy }}
+                            <button type="submit" class="btn btn-black btn-sm btn-block">
+                                UPDATE
+                            </button>
+                            <small>Click <a href="{% url 'change' %}">here </a> to update Personal Profile</small>
+                        </form>
+                        <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

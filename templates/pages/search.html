@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+<!-- Static -->
+{% load static %}
+<!-- ------- -->
+{% block title %} | Search {% endblock %}
+<!-- Home Page Content -->
+{% block content %}
+<!-- Search Form -->
+<section class="container-fluid">
+  <div class="card bg-dark text-whit">
+    <img src="{% static 'img/lagos.jpg' %}" class="card-img search-bg" alt="..." />
+    <div class="card-img-overlay pt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-8 offset-2">
+            <div class="card bg-teal mt-4 pt-3 pb-3">
+              <div class="card-body">
+              <form action=" {% url 'search' %} " class="mb-5">
+                <div class="form-row mt-5">
+                  <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                    <input type="text" class="form-control form-control-sm"
+                      placeholder="Skills ( Enter keywords e.g Python, JavaScript, etc )" name="skills" value="{{ values.skills }}" />
+                  </div>
+                  <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                    <select name="location" class="form-control form-control-sm">
+                      <option selected="true" disabled="disabled" value="">Select Location
+                      </option>
+                      {% for key, value in location.items %}
+                      <option value="{{ key }}" {% if key == values.location %} selected {% endif %}> {{ value }} </option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-black btn-block btn-sm mb-2">
+                  SEARCH
+                </button>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% include "partials/_alert.html" %}
+<!-- Freelancers -->
+<section class="container mt-3">
+  <div class="row justify-content-center">
+    {% for user in users %}
+    <!-- -------- -->
+    <div class="col-sm-12 col-md-8 col-lg-7">
+      <div class="content-section">
+        <div class="media">
+          {% if user.userprofile.profile_image %}
+          <img
+            src="{{ user.userprofile.profile_image.url }}"
+            class="rounded-circle article-img"
+          />
+          {% endif %}
+          <div class="media-body">
+            <small class="mb-0 teal-text">
+              <strong> {{ user.username.title }} </strong> </small
+            ><br />
+            <small class="mb-0 teal-text">Skills:</small><br />
+            {% for skill in user.userprofile.skills_as_list %}
+            <span class="badge badge-secondary">{{ skill }}</span>
+            {% endfor %}
+            <br />
+            {% if request.user.is_authenticated and request.user.is_employer %}
+            <a
+              href="{% url 'profile' user.id %}"
+              type="submit"
+              class="btn btn-sm btn-black ml-auto mr-auto mt-3"
+              >view Profile/Hire</a
+            >
+            {% else %}
+            <a
+              href="{% url 'profile' user.id %}"
+              type="submit"
+              class="btn btn-sm btn-black ml-auto mr-auto mt-3 disabled"
+              >view Profile/Hire</a
+            >
+            <br />
+            <small>Login as an Employer to view profile</small>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ===== -->
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}

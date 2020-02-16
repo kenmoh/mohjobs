@@ -1,0 +1,130 @@
+{% extends "layout.html" %}
+<!-- Static -->
+{% load static %}
+<!-- ----- -->
+{% block title %} | Job Listing {% endblock %}
+<!-- Home Page Content -->
+{% block content %}
+<!-- Search Form -->
+<section class="container-fluid">
+  <div class="card bg-dark text-whit">
+    <img
+      src="{% static 'img/search-bg.png' %}"
+      class="card-img search-bg"
+      alt="..."
+    />
+    <div class="card-img-overlay pt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-8 offset-2">
+            <div class="card bg-teal mt-4 pt-3 pb-3">
+              <div class="card-body">
+                <form action=" {% url 'job-search' %} " class="mb-5">
+                  <div class="form-row mt-5">
+                    <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                      <input
+                        type="text"
+                        class="form-control form-control-sm"
+                        placeholder="Skills ( Enter keywords e.g Python, JavaScript, etc )"
+                        name="job_requirement"
+                      />
+                    </div>
+                    <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                      <select
+                        name="job_location"
+                        class="form-control form-control-sm"
+                      >
+                        <option selected="true" disabled="disabled" value=""
+                          >Select Location
+                        </option>
+                        {% for key, value in job_location.items %}
+                        <option value="{{ key }}"> {{ value }} </option>
+                        {% endfor %}
+                      </select>
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-black btn-block btn-sm mb-2"
+                  >
+                    SEARCH
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% include "partials/_alert.html" %}
+<!--  -->
+<section class="container mt-3">
+  <div class="row justify-content-center">
+    {% for job in jobs %}
+    <!-- Check if jib is Available and Published -->
+    {% if job.user.is_employer %}
+    <!-- -------- -->
+    <!-- -------- -->
+    <div class="col-sm-12 col-md-8 col-lg-7">
+      <div class="content-section">
+        <div class="media">
+          <img
+            src="{{ job.user.userprofile.profile_image.url }}"
+            class="rounded-circle article-img"
+            alt="{{user.first_name.0}} {{user.last_name.0}}"
+          />
+          <div class="media-body">
+            <h5 class="mb-0 text-primary">
+              <strong>{{ job.user.username.title }}</strong>
+            </h5>
+            <small class="mb-0 text-success"
+              >Job Title: <strong>{{ job.job_title.title }}</strong></small
+            >
+            |
+            <small class="mb-0 text-success"
+              >Posted:
+              <strong>{{ job.date_posted | timesince }} </strong> Ago</small
+            ><br />
+            <small class="mb-0 text-success"
+              >Location: <strong>{{ job.job_location }} </strong></small
+            ><br />
+            <small class="mb-0 text-success">Requirement(s):</small><br />
+            {% for requirement in job.job_requirements_as_list %}
+            <span class="badge badge-secondary"> {{ requirement }} </span>
+            {% endfor %}
+            <br />
+            <a href="{% url 'detail' job.id %}"
+              ><small class="mb-0 text-success"
+                ><strong>Description </strong></small
+              ></a
+            >
+            <br />
+            {% if request.user.is_authenticated %} {% if job.application_link %}
+            <a
+              href="{{ job.application_link  }}"
+              type="submit"
+              class="btn btn-sm btn-black ml-auto mr-auto float-right"
+              >Apply Here</a
+            >
+            {% else %}
+            <small class="text-primary float-right"
+              >Send CV: <strong>{{ job.application_email }}</strong></small
+            >
+            {% endif %} {% else %}
+            <small class="text-primary text-center float-right"
+              ><a href="{% url 'login' %}">Login to Apply !</a></small
+            >
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ------- -->
+    {% endif %}
+    <!-- ----- -->
+    {% endfor %}
+  </div>
+</section>
+{% endblock content %}

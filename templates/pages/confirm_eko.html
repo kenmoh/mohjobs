@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+<!-- Loading Static -->
+{% load static %}
+<!-- ---- -->
+{% block title %} | Confirm Payment {% endblock %}
+<!-- Main Content -->
+{% block content %}
+<!-- Login Form -->
+<section class="container">
+  <div class="row  mt-5 mb-5">
+    <div class="col-sm-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4">
+      <div class="card border-secondary mb-3">
+        <div class="card-body">
+          <small class="text-muted">
+            <h5 class="card-title text-center teal-text"> Confirm Payment </h3>
+              <hr />
+            Click <a href="{% url 'confirm-eko' %}">here</a>
+            to confirm payment
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
