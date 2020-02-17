@@ -26,11 +26,11 @@ SECRET_KEY = 'w-iuc%rlmxt9$l_@9sd$ke62%zpbo0px14bl=pws2rt5wj-fjl'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'mohjobs.herokuapp.com'
-]
+# ALLOWED_HOSTS = [
+#     'mohjobs.herokuapp.com'
+# ]
 
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 
 # Application definition
