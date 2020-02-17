@@ -79,7 +79,7 @@ def contact(request):
         name = request.POST['name']
         email = request.POST['email']
         subject = request.POST['subject']
-        message = request.POST['subject']
+        message = request.POST['message']
 
         contact_us = Contact(name=name.title(), email=email, subject=subject, message=message)
         contact_us.save()
