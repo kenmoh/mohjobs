@@ -135,3 +135,9 @@ body {
   background-size: cover !important;
   background-position: bottom !important;
 }
+
+.hide {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}

@@ -30,7 +30,7 @@ class CompanyProfileForm(ModelForm):
         self.helper = FormHelper()
         self.fields['location'].empty_label = 'Select Location'
         self.fields['website'].required = False
-        self.fields['profile_image''].required = False
+        self.fields['profile_image'].required = False
         self.fields['background_image'].required = False
 
 

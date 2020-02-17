@@ -4,7 +4,7 @@ from account.models import User, UserProfile
 
 
 class LekkiForm(forms.ModelForm):
-    lekki = forms.BooleanField(label='Confirm Payment', required=False)
+    lekki = forms.BooleanField(required=False)
 
     class Meta:
         model = User

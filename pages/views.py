@@ -134,7 +134,7 @@ def lekki_update(request):
         form = LekkiForm(request.POST or None, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Payment Updated Successfully !')
+            messages.success(request, f'Subscription Successful !')
             return redirect('employer-dashboard', request.user.id)
     else:
         form = LekkiForm(instance=request.user)
