@@ -60,7 +60,7 @@
 /* EQUAL COLUMN */
 
 .search-bg {
-  height: 400px !important;
+  height: 600px !important;
   width: 100% !important;
 }
 
@@ -113,7 +113,7 @@ body {
 .bg-teal {
   background-color: teal !important;
   color: white !important;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .jumbotron-bg {
@@ -123,8 +123,8 @@ body {
 }
 
 .home-bg {
-  background-image: url("/static/img/lagos.jpg") !important;
-  height: 120vh !important;
+  background-image: url("/static/img/bridge.png") !important;
+  height: 10vh !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: bottom !important;

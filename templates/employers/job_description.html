@@ -35,8 +35,9 @@
             ><br />
             <small class="teal-text">{{ post.job_description }}</small>
             <br />
-            {% if request.user.is_authenticated %} {% if post.application_link
-            %}
+            {% if request.user.is_authenticated %}
+            <!-- ---- -->
+            {% if post.application_link %}
             <a
               href="{{ post.application_link  }}"
               type="submit"
@@ -47,7 +48,9 @@
             <small class="text-primary float-right"
               >Send CV: <strong>{{ post.application_email }}</strong></small
             >
-            {% endif %} {% else %}
+            {% endif %}
+            <!-- --- -->
+            {% else %}
             <small class="text-primary text-center float-right"
               ><a href="{% url 'login' %}">Login to Apply !</a></small
             >
@@ -61,7 +64,9 @@
     <div class="container">
       <h1 class="text-center text-teal">No Job Listings Available</h1>
     </div>
-    {% endif %} {% endfor %}
+    {% endif %}
+    <!-- ----- -->
+    {% endfor %}
   </div>
 </section>
 {% endblock content %}

@@ -9,16 +9,17 @@
 <section class="container-fluid">
   <div class="card bg-dark text-whit">
     <img
-      src="{% static 'img/search-bg.png' %}"
+      src="{% static 'img/building.jpg' %}"
       class="card-img search-bg"
       alt="..."
     />
-    <div class="card-img-overlay pt-5">
+    <div class="card-img-overlay pt-2">
       <div class="container">
         <div class="row">
-          <div class="col-8 offset-2">
-            <div class="card bg-teal mt-4 pt-3 pb-3">
-              <div class="card-body">
+          <div class="col">
+            <div class="card bg-teal mb-5 mt-2">
+              <div class="card-body mb-5">
+                <br /><br />
                 <form action=" {% url 'job-search' %} " class="mb-5">
                   <div class="form-row mt-5">
                     <div class="form-group col-sm-12 col-md-6 col-lg-6">
@@ -70,11 +71,18 @@
     <div class="col-sm-12 col-md-8 col-lg-7">
       <div class="content-section">
         <div class="media">
+          {% if job.user.userprofile.profile_image %}
           <img
             src="{{ job.user.userprofile.profile_image.url }}"
             class="rounded-circle article-img"
             alt="{{user.first_name.0}} {{user.last_name.0}}"
           />
+          {% else %}
+          <img
+            src="{% static 'img/company.png' %}"
+            class="rounded-circle article-img"
+          />
+          {% endif %}
           <div class="media-body">
             <h5 class="mb-0 text-primary">
               <strong>{{ job.user.username.title }}</strong>
