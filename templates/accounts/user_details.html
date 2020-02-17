@@ -8,12 +8,13 @@
         {% if user.userprofile.background_image %}
             <img src="{{ user.userprofile.background_image.url}}" class="card-img-top bg-img" alt="">
         {% else %}
-        <img src="{% static 'img/eko.png' %}" class="card-img search-bg" alt="..." />
+        <img src="{% static 'img/building.jpg' %}" class="card-img search-bg" alt="..." />
         {% endif %}
             <div class="card-body">
             {% if user.userprofile.profile_image %}
             <img src="{{ user.userprofile.profile_image.url}}" class="rounded-circle img-circle mx-auto d-block shadow" alt="...">
             {% else %}
+            <img src="{% static 'img/user.png' %}" class="card-img search-bg" alt="..." />
             {% endif %}
                 <h5 class="card-title mt-2 text-center text-info"> {{ user.first_name.title }}  {{user.last_name.title}} </h5>
                 <div class="">
