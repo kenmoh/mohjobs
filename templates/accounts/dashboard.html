@@ -12,6 +12,7 @@
         <p class="text-center grey-text">
          Welcome {{ user.username.title }}
         </p>
+        <span class="text-center text-danger">*** Update and publish your profile so it can be vissible to others ***</span>
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-4 mb-2">
                 <a href="{% url 'update' user.id %}" type="button" class="btn btn-black btn-block">
