@@ -15,6 +15,7 @@ django-crispy-forms = "*"
 django-filter = "*"
 whitenoise = "*"
 gunicorn = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.8"
