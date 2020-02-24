@@ -3,7 +3,7 @@ from account.states import STATE_CHOICES, STATUS_CHOICES
 from account.models import User, UserProfile
 
 
-class LekkiForm(forms.ModelForm):
+class SilverForm(forms.ModelForm):
     lekki = forms.BooleanField(required=False)
 
     class Meta:
@@ -11,7 +11,7 @@ class LekkiForm(forms.ModelForm):
         fields = ['lekki']
 
 
-class IkoyiForm(forms.ModelForm):
+class GoldForm(forms.ModelForm):
     ikoyi = forms.BooleanField(label='Confirm Payment', required=False)
 
     class Meta:
@@ -19,7 +19,7 @@ class IkoyiForm(forms.ModelForm):
         fields = ['ikoyi']
 
 
-class EkoForm(forms.ModelForm):
+class PlatinumForm(forms.ModelForm):
     eko_atlantic = forms.BooleanField(label='Confirm Payment', required=False)
 
     class Meta:
