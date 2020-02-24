@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+<!-- Static -->
+{% load static %} {% block title %} | Welcome {% endblock %}
+<!-- Home Page Content -->
+{% block content %}
+<!-- Search Form -->
+<section class="container-fluid">
+  <div class="card bg-dark text-white">
+    <img
+      src="{% static 'img/ikoyi-bridge.jpg' %}"
+      class="card-img search-bg"
+      alt="..."
+    />
+    <div class="card-img-overlay ">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <br /><br /><br />
+            <div class="card bg-teal mb-5 mt-2">
+              <div class="card-body mb-5">
+                <br /><br /><br />
+                <h1 class="text-center teal-tex font-weight-light">
+                  Oooop! (Server Error)
+                </h1>
+                <h2 class="text-center text-white">
+                  THE PAGE YOU REQUESTED FOR IS NOT AVAILABLE
+                </h2>
+                <a
+                  href="{% url 'index' %}"
+                  type="button"
+                  class="btn btn-sm btn-black float-right"
+                  >Let's take you home</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
