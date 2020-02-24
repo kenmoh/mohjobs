@@ -6,15 +6,15 @@
     <section class="container">
         <div class="card mb-3 mt-0">
         {% if user.userprofile.background_image %}
-            <img src="{{ user.userprofile.background_image.url}}" class="card-img-top bg-img" alt="">
+            <img src="{{ user.userprofile.background_image.url }}" class="card-img-top bg-profile-img" alt="">
         {% else %}
-        <img src="{% static 'img/building.jpg' %}" class="card-img search-bg" alt="..." />
+        <img src="{% static 'img/building.jpg' %}" class="card-img bg-profile-img" alt="..." />
         {% endif %}
             <div class="card-body">
             {% if user.userprofile.profile_image %}
-            <img src="{{ user.userprofile.profile_image.url}}" class="rounded-circle img-circle mx-auto d-block shadow" alt="...">
+            <img src="{{ user.userprofile.profile_image.url }}" class="rounded-circle img-circle mx-auto d-block shadow" alt="...">
             {% else %}
-            <img src="{% static 'img/user.png' %}" class="card-img search-bg" alt="..." />
+            <img src="{% static 'img/user.png' %}" class="rounded-circle img-circle mx-auto d-block shadow" alt="..." />
             {% endif %}
                 <h5 class="card-title mt-2 text-center text-info"> {{ user.first_name.title }}  {{user.last_name.title}} </h5>
                 <div class="">
@@ -28,8 +28,8 @@
     <section class="container">
         <div class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title text-center text-info">About Me</h5>
-                <div class="d-flex justify-content-center">
+                <h5 class="card-title text-info">About Me</h5>
+                <div class="">
                     <p class="card-text teal-text">{{ user.userprofile.about_me }}</p>
                 </div>
             </div>
@@ -39,8 +39,8 @@
     <section class="container">
         <div class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title text-center text-info">Skills</h5>
-                <div class="d-flex justify-content-center">
+                <h5 class="card-title text-info">Skills</h5>
+                <div class="">
                     {% for skill in user.userprofile.skills_as_list %}
                         <span class="badge badge-secondary mx-1">{{ skill.title }}</span>
                     {% endfor %}
@@ -52,7 +52,7 @@
     <section class="container">
         <div class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title text-center text-info">Experience</h5>
+                <h5 class="card-title text-info">Experience</h5>
                 {% for experience in experiences %}
                 <p class="card-text teal-text"><strong> Company Name: </strong> {{ experience.company_name }} </p>
                 <p class="card-text teal-text"><strong> Job Title: </strong> {{ experience.job_title }} </p>
@@ -68,7 +68,7 @@
     <section class="container">
         <div class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title text-center text-info">Education</h5>
+                <h5 class="card-title text-info">Education</h5>
                 {% for education in educations %}
                 <p class="card-text teal-text"><strong> School: </strong> {{education.school }} </p>
                 <p class="card-text teal-text"><strong> Field of Study: </strong> {{ education.field_of_study }} </p>

@@ -57,11 +57,17 @@
   height: 200px !important;
 }
 
+.bg-profile-img {
+  height: 200px !important;
+  border-radius: 0px;
+}
+
 /* EQUAL COLUMN */
 
 .search-bg {
   height: 600px !important;
   width: 100% !important;
+  border: none;
 }
 
 .container-fluid {
@@ -128,4 +134,10 @@ body {
   background-repeat: no-repeat !important;
   background-size: cover !important;
   background-position: bottom !important;
+}
+
+.hide {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
 }

@@ -4,7 +4,7 @@ from django.contrib import messages
 from account.models import User, UserProfile
 from account.states import LOCATION_CHOICES, STATE_CHOICES
 from employers.models import JobPost
-from .forms import LekkiForm, IkoyiForm, EkoForm
+from .forms import SilverForm, GoldForm, PlatinumForm
 from .models import Contact
 
 
@@ -72,6 +72,14 @@ def job_search(request):
 def about(request):
     return render(request, 'pages/about.html')
 
+# Terms and Condition
+def terms(request):
+    return render(request, 'pages/terms.html')
+
+# Privacy Policy
+def policy(request):
+    return render(request, 'pages/policy.html')
+
 
 # Contact Us page
 def contact(request):
@@ -79,7 +87,7 @@ def contact(request):
         name = request.POST['name']
         email = request.POST['email']
         subject = request.POST['subject']
-        message = request.POST['subject']
+        message = request.POST['message']
 
         contact_us = Contact(name=name.title(), email=email, subject=subject, message=message)
         contact_us.save()
@@ -116,62 +124,62 @@ def job_detail(request, id):
 
 # Paystack Redirect
 @login_required
-def confirm_lekki(request):
-    return render(request, 'pages/confirm_lekki.html')
+def confirm_silver(request):
+    return render(request, 'pages/confirm_silver.html')
 
 @login_required
-def confirm_ikoyi(request):
-    return render(request, 'pages/confirm_ikoyi.html')
+def confirm_gold(request):
+    return render(request, 'pages/confirm_gold.html')
 
 @login_required
-def confirm_eko(request):
-    return render(request, 'pages/confirm_eko.html')
+def confirm_platinum(request):
+    return render(request, 'pages/confirm_platinum.html')
 
 # Update Plan
 @login_required
-def lekki_update(request):
+def silver_update(request):
     if request.method == 'POST':
-        form = LekkiForm(request.POST or None, instance=request.user)
+        form =SilverForm(request.POST or None, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Payment Updated Successfully !')
+            messages.success(request, f'Subscription Successful !')
             return redirect('employer-dashboard', request.user.id)
     else:
-        form = LekkiForm(instance=request.user)
+        form =SilverForm(instance=request.user)
     context = {
         'form': form
     }
 
-    return render(request, 'pages/lekki.html', context)
+    return render(request, 'pages/silver.html', context)
 @login_required
-def ikoyi_update(request):
+def gold_update(request):
     if request.method == 'POST':
-        form = IkoyiForm(request.POST or None, instance=request.user)
+        form = GoldForm(request.POST or None, instance=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, f'Payment Updated Successfully !')
             return redirect('employer-dashboard', request.user.id)
     else:
-        form = IkoyiForm(instance=request.user)
+        form = GoldForm(instance=request.user)
     context = {
         'form': form
     }
 
-    return render(request, 'pages/ikoyi.html', context)
+    return render(request, 'pages/gold.html', context)
 @login_required
-def eko_update(request):
+def platinum_update(request):
     if request.method == 'POST':
-        form = EkoForm(request.POST or None, instance=request.user)
+        form = PlatinumForm(request.POST or None, instance=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, f'Payment Updated Successfully !')
             return redirect('employer-dashboard', request.user.id)
     else:
-        form = EkoForm(instance=request.user)
+        form = PlatinumForm(instance=request.user)
 
     context = {
         'form': form
     }
 
-    return render(request, 'pages/eko.html', context)
+    return render(request, 'pages/platinum.html', context)
 

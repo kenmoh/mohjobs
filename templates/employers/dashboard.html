@@ -10,17 +10,17 @@
     <h5 class="text-center mt-5 teal-text">DASHBOARD</h5>
     <!-- Lekki -->
     {% if user.lekki %}
-    <p class="text-center grey-text"> Welcome <strong> {{ user.username.title }}</strong>, You are on <strong> Lekki </strong>Plan !</p>
+    <p class="text-center grey-text"> Welcome <strong> {{ user.username.title }}</strong>, You are on <strong> Silver </strong>Plan !</p>
     {% else %}
     {% endif %}
     <!-- Ikoyi -->
     {% if user.ikoyi %}
-    <p class="text-center grey-text">Welcome<strong> {{ user.username.title }}</strong>, You are on <strong> Ikoyi </strong>Plan !</p>
+    <p class="text-center grey-text">Welcome<strong> {{ user.username.title }}</strong>, You are on <strong> Gold </strong>Plan !</p>
     {% else %}
     {% endif %}
     <!-- Eko -->
     {% if user.eko_atlantic %}
-    <p class="text-center grey-text">Welcome<strong> {{ user.username.title }}</strong>, You are on <strong> Eko Atlantic </strong>Plan !</p>
+    <p class="text-center grey-text">Welcome<strong> {{ user.username.title }}</strong>, You are on <strong> Platinum </strong>Plan !</p>
     {% else %}
     {% endif %}
     <div class="row">
@@ -55,7 +55,7 @@
         {% elif request.user.lekki %}
         <div class="col-sm-12 col-md-12 col-lg-6 mb-2">
             <a href="{% url 'post' %}" type="button"
-            {% if posts|length == 1 %} 
+            {% if posts|length == 2 %} 
             class="btn btn-black btn-block disabled"
             {% else %} 
             class="btn btn-black btn-block" 
@@ -140,7 +140,7 @@
         </tbody>
     </table>
     <hr class="bg-info">
-    {% if request.user.lekki and posts|length == 1 %}
+    {% if request.user.lekki and posts|length == 2 %}
     <p class="text-danger text-center">You can only List one job with this Plan ! Chose a paid plan to have more permissions.</p>
     {% endif %}
     {% if posts %}
